@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin, Linkedin, ChevronDown, FileDown } from "lucide-react";
-
-const RESUME_HREF = "/resume-flutter-rn.pdf";
+import { LINKEDIN_URL } from "@/lib/siteLinks";
+import { downloadResume, RESUME_PUBLIC_PATH } from "@/lib/resume";
 
 const HeroSection = () => {
   return (
@@ -73,7 +73,12 @@ const HeroSection = () => {
             Gujranwala, Pakistan
           </span>
           <span className="hidden sm:block text-border">•</span>
-          <a href="#" className="flex items-center gap-2 hover:text-primary transition-colors">
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-primary transition-colors"
+          >
             <Linkedin className="w-4 h-4" />
             LinkedIn
           </a>
@@ -98,8 +103,8 @@ const HeroSection = () => {
             Contact Me
           </a>
           <a
-            href={RESUME_HREF}
-            download
+            href={RESUME_PUBLIC_PATH}
+            onClick={(e) => void downloadResume(e)}
             className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-border bg-white/80 text-foreground font-heading font-semibold text-sm tracking-wide hover:border-primary/50 hover:text-primary transition-all duration-300"
           >
             <FileDown className="w-4 h-4" />

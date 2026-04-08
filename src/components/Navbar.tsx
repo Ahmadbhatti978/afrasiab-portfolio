@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { downloadResume, RESUME_PUBLIC_PATH } from "@/lib/resume";
 
-const links: { label: string; href: string; external?: boolean; download?: boolean }[] = [
+const links: { label: string; href: string; external?: boolean; resumeClick?: boolean }[] = [
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
-  { label: "Resume", href: "/resume-flutter-rn.pdf", download: true },
+  { label: "Resume", href: RESUME_PUBLIC_PATH, resumeClick: true },
 ];
 
 const Navbar = () => {
@@ -38,7 +39,7 @@ const Navbar = () => {
               href={link.href}
               className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
               {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              {...(link.download ? { download: true } : {})}
+              {...(link.resumeClick ? { onClick: (e) => void downloadResume(e) } : {})}
             >
               {link.label}
             </a>
