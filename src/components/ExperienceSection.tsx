@@ -45,7 +45,7 @@ const ExperienceSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="py-24" ref={ref}>
+    <section id="experience" className="py-24 bg-white/70" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -87,7 +87,7 @@ const ExperienceSection = () => {
                   <p className="text-sm text-muted-foreground mb-3">
                     {exp.company} · {exp.location}
                   </p>
-                  <p className="text-sm text-secondary-foreground/80 leading-relaxed">
+                  <p className="text-sm text-secondary-foreground/90 leading-relaxed">
                     {exp.description}
                   </p>
                 </div>

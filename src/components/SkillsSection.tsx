@@ -25,7 +25,7 @@ const SkillsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-24" ref={ref}>
+    <section id="skills" className="py-24 bg-white/70" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -46,7 +46,7 @@ const SkillsSection = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="glass-card p-6"
+              className="glass-card p-6 hover:border-glow transition-all duration-300"
             >
               <h3 className="font-heading text-sm font-semibold text-primary mb-4 uppercase tracking-wider">
                 {cat.title}

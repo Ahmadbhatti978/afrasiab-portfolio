@@ -7,12 +7,12 @@ const HeroSection = () => {
       {/* Animated background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-[100px]"
+          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/15 blur-[110px]"
           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full bg-primary/8 blur-[80px]"
+          className="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full bg-accent/15 blur-[90px]"
           animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -25,7 +25,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.div
-            className="inline-block mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium tracking-wide"
+            className="inline-block mb-6 px-4 py-1.5 rounded-full border border-primary/25 bg-white/80 text-primary text-sm font-medium tracking-wide shadow-sm"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
@@ -84,13 +84,13 @@ const HeroSection = () => {
         >
           <a
             href="#projects"
-            className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-heading font-semibold text-sm tracking-wide hover:brightness-110 transition-all duration-300 glow-box hover:glow-box-strong"
+            className="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-heading font-semibold text-sm tracking-wide hover:brightness-110 transition-all duration-300 glow-box hover:glow-box-strong"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="px-8 py-3 rounded-lg border border-border text-foreground font-heading font-semibold text-sm tracking-wide hover:border-primary/50 hover:text-primary transition-all duration-300"
+            className="px-8 py-3 rounded-lg border border-border bg-white/80 text-foreground font-heading font-semibold text-sm tracking-wide hover:border-primary/50 hover:text-primary transition-all duration-300"
           >
             Contact Me
           </a>

@@ -7,40 +7,40 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 8%;
+    --foreground: 222 47% 11%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 0 0% 10%;
+    --primary: 239 84% 67%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 95%;
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 220 33% 97%;
+    --secondary-foreground: 222 47% 20%;
 
-    --muted: 0 0% 93%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 220 25% 96%;
+    --muted-foreground: 220 11% 42%;
 
-    --accent: 0 0% 10%;
+    --accent: 190 95% 43%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 10%;
+    --border: 220 22% 90%;
+    --input: 220 22% 90%;
+    --ring: 239 84% 67%;
 
     --radius: 0.75rem;
 
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    --glow-primary: 0 0 30px hsl(0 0% 0% / 0.06);
-    --glow-primary-strong: 0 0 50px hsl(0 0% 0% / 0.1);
+    --glow-primary: 0 14px 34px hsl(239 84% 67% / 0.14);
+    --glow-primary-strong: 0 20px 45px hsl(239 84% 67% / 0.2);
   }
 }
 
@@ -59,15 +59,15 @@
   }
 
   ::selection {
-    background: hsl(0 0% 10% / 0.15);
-    color: hsl(0 0% 5%);
+    background: hsl(239 84% 67% / 0.2);
+    color: hsl(222 47% 11%);
   }
 }
 
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(0 0% 5%), hsl(0 0% 35%));
+    background-image: linear-gradient(135deg, hsl(239 84% 58%), hsl(190 95% 43%));
   }
 
   .glow-box {
@@ -79,7 +79,7 @@
   }
 
   .border-glow {
-    border-color: hsl(var(--primary) / 0.3);
+    border-color: hsl(var(--primary) / 0.4);
   }
 
   .section-container {
@@ -87,7 +87,8 @@
   }
 
   .glass-card {
-    @apply bg-card backdrop-blur-md border border-border rounded-xl;
+    @apply bg-card/90 backdrop-blur-md border border-border rounded-xl;
+    box-shadow: 0 8px 28px hsl(240 38% 20% / 0.06);
   }
 }
 
@@ -100,12 +101,12 @@ html {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: hsl(0 0% 97%);
+  background: hsl(220 33% 97%);
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(0 0% 75%);
+  background: hsl(220 16% 75%);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(0 0% 50%);
+  background: hsl(239 40% 60%);
 }

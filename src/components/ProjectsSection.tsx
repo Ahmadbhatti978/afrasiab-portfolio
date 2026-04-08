@@ -69,7 +69,7 @@ const ProjectsSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="glass-card p-6 group hover:border-glow transition-all duration-500 hover:glow-box cursor-pointer block"
+              className="glass-card p-6 group hover:border-glow transition-all duration-500 hover:glow-box hover:-translate-y-1 cursor-pointer block"
             >
               <div className="flex items-start justify-between mb-3">
                 <div>

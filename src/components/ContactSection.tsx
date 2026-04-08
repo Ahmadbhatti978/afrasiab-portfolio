@@ -37,7 +37,7 @@ const ContactSection = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
                 whileHover={{ y: -3 }}
-                className="glass-card p-5 flex items-center gap-4 hover:border-glow transition-all duration-300 group"
+                className="glass-card p-5 flex items-center gap-4 hover:border-glow transition-all duration-300 group hover:-translate-y-1"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <item.icon className="w-5 h-5 text-primary" />
