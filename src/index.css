@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 239 84% 67%;
+    --primary: 210 98% 48%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 33% 97%;
@@ -24,7 +24,7 @@
     --muted: 220 25% 96%;
     --muted-foreground: 220 11% 42%;
 
-    --accent: 190 95% 43%;
+    --accent: 172 72% 38%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,15 +32,15 @@
 
     --border: 220 22% 90%;
     --input: 220 22% 90%;
-    --ring: 239 84% 67%;
+    --ring: 210 98% 48%;
 
     --radius: 0.75rem;
 
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    --glow-primary: 0 14px 34px hsl(239 84% 67% / 0.14);
-    --glow-primary-strong: 0 20px 45px hsl(239 84% 67% / 0.2);
+    --glow-primary: 0 14px 34px hsl(210 98% 48% / 0.16);
+    --glow-primary-strong: 0 20px 45px hsl(210 98% 48% / 0.24);
   }
 }
 
@@ -59,7 +59,7 @@
   }
 
   ::selection {
-    background: hsl(239 84% 67% / 0.2);
+    background: hsl(210 98% 48% / 0.22);
     color: hsl(222 47% 11%);
   }
 }
@@ -67,7 +67,7 @@
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(239 84% 58%), hsl(190 95% 43%));
+    background-image: linear-gradient(135deg, hsl(210 98% 42%), hsl(172 72% 36%));
   }
 
   .glow-box {
@@ -108,5 +108,5 @@ html {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(239 40% 60%);
+  background: hsl(210 70% 52%);
 }

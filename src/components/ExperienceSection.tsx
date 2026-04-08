@@ -4,41 +4,61 @@ import { useRef } from "react";
 
 const experiences = [
   {
+    role: "React Native Developer",
+    company: "AdroidIT Solutions",
+    location: "Gujranwala, Pakistan",
+    period: "Sep 2025 — Present",
+    description:
+      "Develop and maintain cross-platform mobile applications using React Native. Manage application state with Redux Toolkit and Redux Saga.",
+  },
+  {
     role: "Flutter Developer",
     company: "Unanime Planet",
     location: "Lisbon, Portugal (Remote)",
-    period: "Aug 2024 — Present",
-    description: "Developed and maintained the UPrides Driver App, a production-level taxi application, using APIs and WebSockets for smooth driver-side operations.",
+    period: "Aug 2024 — Aug 2025",
+    description:
+      "Developed and maintained the UPrides Driver App, a production-level taxi application, using APIs and WebSockets for reliable driver-side operations.",
   },
   {
     role: "Senior Frontend Developer",
     company: "HeapStash Global",
     location: "Remote",
-    period: "Jan 2023",
-    description: "Developed Fintech applications supporting bank account linking, cryptocurrency wallet management, and flight bookings.",
+    period: "Dec 2023 - May 2025",
+    description:
+      "Built fintech experiences supporting bank account linking and cryptocurrency wallet management. Delivered a Flutter web app for flight bookings and crypto payments with a smooth end-to-end user experience.",
   },
   {
     role: "Flutter Developer",
     company: "RightBiz",
     location: "Remote",
     period: "Oct 2023 — Feb 2025",
-    description: "Worked on product development as a solo mobile app developer, building marketplace applications.",
+    description:
+      "Owned product development as a solo mobile developer, shipping marketplace and business apps end to end.",
   },
   {
     role: "Flutter Developer",
     company: "DS Legends",
     location: "Remote",
     period: "May 2023 — Sep 2023",
-    description: "Developed multiple AI-powered mobile applications integrating ChatGPT and chatbot functionalities.",
+    description:
+      "Built and maintained Flutter products for the company. Shipped multiple AI-powered apps integrating ChatGPT and chatbot experiences.",
   },
   {
     role: "Flutter Developer",
     company: "Appcrates",
     location: "Gujranwala, Pakistan",
     period: "Nov 2022 — Sep 2025",
-    description: "Collaborated with cross-functional teams to develop and launch mobile applications. Implemented state management using Provider and GetX.",
+    description:
+      "Collaborated with designers, PMs, and backend engineers to ship mobile features. Implemented state management with Provider and GetX to improve performance and maintainability.",
   },
 ];
+
+const education = {
+  degree: "Bachelor of Science in Computer Science",
+  school: "GIFT University",
+  location: "Gujranwala, Pakistan",
+  period: "Sep 2017 — Jun 2021",
+};
 
 const ExperienceSection = () => {
   const ref = useRef(null);
@@ -60,19 +80,17 @@ const ExperienceSection = () => {
         </motion.div>
 
         <div className="relative">
-          {/* Timeline line */}
           <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-border" />
 
           <div className="space-y-12">
             {experiences.map((exp, i) => (
               <motion.div
-                key={i}
+                key={`${exp.company}-${exp.period}`}
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: i * 0.15, duration: 0.6 }}
                 className="relative pl-8 md:pl-20"
               >
-                {/* Timeline dot */}
                 <div className="absolute left-0 md:left-8 top-2 w-2.5 h-2.5 rounded-full bg-primary -translate-x-1 ring-4 ring-background" />
 
                 <div className="glass-card p-6 hover:border-glow transition-all duration-500 hover:glow-box">
@@ -95,6 +113,24 @@ const ExperienceSection = () => {
             ))}
           </div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="mt-16"
+        >
+          <h3 className="font-heading text-xl font-bold mb-4">Education</h3>
+          <div className="glass-card p-6 max-w-2xl">
+            <p className="font-heading font-semibold text-foreground">{education.degree}</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              {education.school} · {education.location}
+            </p>
+            <p className="text-xs text-primary font-medium tracking-wider uppercase mt-3">
+              {education.period}
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

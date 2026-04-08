@@ -1,6 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Mail, MapPin, Phone, Linkedin } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin, FileDown } from "lucide-react";
+
+const RESUME_HREF = "/resume-flutter-rn.pdf";
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -29,10 +31,18 @@ const ContactSection = () => {
               { icon: Phone, label: "Phone", value: "+92 312 724 4728", href: "tel:+923127244728" },
               { icon: MapPin, label: "Location", value: "Gujranwala, Pakistan", href: "#" },
               { icon: Linkedin, label: "LinkedIn", value: "Connect on LinkedIn", href: "#" },
+              {
+                icon: FileDown,
+                label: "Resume",
+                value: "Download PDF",
+                href: RESUME_HREF,
+                download: true,
+              },
             ].map((item, i) => (
               <motion.a
                 key={i}
                 href={item.href}
+                {...(item.download ? { download: true } : {})}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}

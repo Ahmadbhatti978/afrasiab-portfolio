@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const links = [
+const links: { label: string; href: string; external?: boolean; download?: boolean }[] = [
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
+  { label: "Resume", href: "/resume-flutter-rn.pdf", download: true },
 ];
 
 const Navbar = () => {
@@ -36,6 +37,8 @@ const Navbar = () => {
               key={link.label}
               href={link.href}
               className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              {...(link.download ? { download: true } : {})}
             >
               {link.label}
             </a>

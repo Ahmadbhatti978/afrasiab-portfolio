@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Linkedin, ChevronDown } from "lucide-react";
+import { Mail, MapPin, Linkedin, ChevronDown, FileDown } from "lucide-react";
+
+const RESUME_HREF = "/resume-flutter-rn.pdf";
 
 const HeroSection = () => {
   return (
@@ -50,8 +52,9 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
-          Mobile App Developer specializing in cross-platform development with Flutter.
-          Building scalable, high-performance applications with clean architecture.
+          Mobile engineer focused on Flutter and React Native. I ship scalable, high-performance apps with clean
+          architecture, solid UX, and integrations across Firebase, REST APIs, and real-time features—from build to
+          deployment.
         </motion.p>
 
         <motion.div
@@ -77,7 +80,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          className="flex items-center justify-center gap-4"
+          className="flex flex-wrap items-center justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
@@ -93,6 +96,14 @@ const HeroSection = () => {
             className="px-8 py-3 rounded-lg border border-border bg-white/80 text-foreground font-heading font-semibold text-sm tracking-wide hover:border-primary/50 hover:text-primary transition-all duration-300"
           >
             Contact Me
+          </a>
+          <a
+            href={RESUME_HREF}
+            download
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-border bg-white/80 text-foreground font-heading font-semibold text-sm tracking-wide hover:border-primary/50 hover:text-primary transition-all duration-300"
+          >
+            <FileDown className="w-4 h-4" />
+            Resume
           </a>
         </motion.div>
       </div>

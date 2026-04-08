@@ -4,19 +4,47 @@ import { useRef } from "react";
 const skillCategories = [
   {
     title: "Mobile Development",
-    skills: ["Flutter", "React Native", "Dart", "JavaScript", "TypeScript", "Redux Toolkit"],
+    skills: [
+      "Flutter",
+      "React Native",
+      "Dart",
+      "JavaScript",
+      "TypeScript",
+      "Redux Toolkit",
+      "Redux Saga",
+    ],
   },
   {
     title: "Backend & APIs",
-    skills: ["RESTful APIs", "API Integration", "Google Cloud Functions"],
+    skills: ["RESTful APIs", "API integration", "Google Cloud Functions"],
   },
   {
     title: "Services & SDKs",
-    skills: ["Firebase", "FCM", "OneSignal", "WebSockets", "Google Maps", "Google ML Kit"],
+    skills: [
+      "Firebase",
+      "FCM",
+      "OneSignal",
+      "WebSockets",
+      "Google Maps",
+      "Google ML Kit",
+    ],
   },
   {
     title: "Dev Tools",
     skills: ["Git", "CI/CD"],
+  },
+  {
+    title: "Soft Skills",
+    skills: [
+      "Project delivery",
+      "Teamwork & collaboration",
+      "Goal attainment",
+      "Relationship building",
+    ],
+  },
+  {
+    title: "Languages",
+    skills: ["English"],
   },
 ];
 
@@ -39,13 +67,13 @@ const SkillsSection = () => {
           <div className="w-16 h-1 rounded-full bg-primary" />
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((cat, i) => (
             <motion.div
-              key={i}
+              key={cat.title}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              transition={{ delay: i * 0.08, duration: 0.5 }}
               className="glass-card p-6 hover:border-glow transition-all duration-300"
             >
               <h3 className="font-heading text-sm font-semibold text-primary mb-4 uppercase tracking-wider">
