@@ -82,6 +82,22 @@
     border-color: hsl(var(--primary) / 0.4);
   }
 
+  .hero-coder-grid {
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 42%, black 0%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 42%, black 0%, transparent 72%);
+    animation: hero-grid-drift 32s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-coder-grid {
+      animation: none;
+    }
+  }
+
   .section-container {
     @apply max-w-5xl mx-auto px-6;
   }
@@ -89,6 +105,15 @@
   .glass-card {
     @apply bg-card/90 backdrop-blur-md border border-border rounded-xl;
     box-shadow: 0 8px 28px hsl(240 38% 20% / 0.06);
+  }
+}
+
+@keyframes hero-grid-drift {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 56px 56px, 56px 56px;
   }
 }
 

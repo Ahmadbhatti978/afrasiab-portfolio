@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { downloadResume, RESUME_PUBLIC_PATH } from "@/lib/resume";
 
 const links: { label: string; href: string; external?: boolean; resumeClick?: boolean }[] = [
@@ -29,9 +30,9 @@ const Navbar = () => {
       }`}
     >
       <div className="section-container flex items-center justify-between h-16">
-        <a href="#" className="font-heading font-bold text-lg text-gradient">
+        <Link to="/" className="font-heading font-bold text-lg text-gradient">
           AA
-        </a>
+        </Link>
         <div className="hidden sm:flex items-center gap-8">
           {links.map((link) => (
             <a

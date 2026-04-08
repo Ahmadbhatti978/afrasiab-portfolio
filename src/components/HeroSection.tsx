@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Linkedin, ChevronDown, FileDown } from "lucide-react";
+import { Mail, MapPin, Linkedin, FileDown } from "lucide-react";
 import { LINKEDIN_URL } from "@/lib/siteLinks";
 import { downloadResume, RESUME_PUBLIC_PATH } from "@/lib/resume";
 
@@ -8,6 +8,7 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 pointer-events-none">
+        <div className="hero-coder-grid absolute inset-0 opacity-90" aria-hidden />
         <motion.div
           className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/15 blur-[110px]"
           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
@@ -112,14 +113,6 @@ const HeroSection = () => {
           </a>
         </motion.div>
       </div>
-
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <ChevronDown className="w-6 h-6 text-muted-foreground/50" />
-      </motion.div>
     </section>
   );
 };

@@ -1,7 +1,8 @@
 import type { MouseEvent } from "react";
 
-/** File in /public */
-export const RESUME_PUBLIC_PATH = "/afrasiab_resume.pdf";
+const base = import.meta.env.BASE_URL;
+/** File in /public; respects Vite `base` (e.g. GitHub Pages project URL). */
+export const RESUME_PUBLIC_PATH = `${base.endsWith("/") ? base : `${base}/`}afrasiab_resume.pdf`;
 
 export const RESUME_DOWNLOAD_FILENAME = "Afrasiab_Ahmad_Resume.pdf";
 
