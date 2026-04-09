@@ -116,7 +116,7 @@ const ExperienceSection = () => {
           {canShowMore && (
             <button
               type="button"
-              onClick={() => setVisibleCount((prev) => Math.min(prev + 2, experiences.length))}
+              onClick={() => setVisibleCount(experiences.length)}
               className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:brightness-110 transition-all"
             >
               Show More

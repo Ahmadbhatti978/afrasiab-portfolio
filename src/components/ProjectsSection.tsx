@@ -188,7 +188,7 @@ const ProjectsSection = () => {
           {canShowMore && (
             <button
               type="button"
-              onClick={() => setVisibleCount((prev) => Math.min(prev + 3, projectsWithPreview.length))}
+              onClick={() => setVisibleCount(projectsWithPreview.length)}
               className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:brightness-110 transition-all"
             >
               Show More
@@ -198,7 +198,7 @@ const ProjectsSection = () => {
             <button
               type="button"
               onClick={() => setVisibleCount(3)}
-              className="px-5 py-2.5 rounded-lg border border-border bg-white/85 text-foreground text-sm font-medium hover:border-primary/40 hover:text-primary transition-all"
+              className="px-5 py-2.5 rounded-lg border border-border bg-card/70 text-foreground text-sm font-medium hover:border-primary/40 hover:text-primary transition-all"
             >
               Show Less
             </button>
