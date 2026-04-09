@@ -77,7 +77,7 @@ const ExperienceSection = () => {
           <div className="w-24 h-1 rounded-full bg-gradient-to-r from-primary to-accent mx-auto" />
         </motion.div>
 
-        <div className="relative rounded-3xl border border-border/70 bg-white/65 backdrop-blur-sm p-6 md:p-8">
+        <div className="relative rounded-3xl border border-border/70 bg-card/55 backdrop-blur-sm p-6 md:p-8">
           <div className="absolute left-6 md:left-10 top-8 bottom-8 w-px bg-gradient-to-b from-primary/70 via-primary/25 to-accent/60" />
 
           <div className="space-y-12">
@@ -126,7 +126,7 @@ const ExperienceSection = () => {
             <button
               type="button"
               onClick={() => setVisibleCount(2)}
-              className="px-5 py-2.5 rounded-lg border border-border bg-white/85 text-foreground text-sm font-medium hover:border-primary/40 hover:text-primary transition-all"
+              className="px-5 py-2.5 rounded-lg border border-border bg-card/70 text-foreground text-sm font-medium hover:border-primary/40 hover:text-primary transition-all"
             >
               Show Less
             </button>

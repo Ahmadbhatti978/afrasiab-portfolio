@@ -24,7 +24,7 @@ const HeroSection = () => {
       <div className="section-container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-primary/20 bg-white/80 text-primary text-sm font-medium tracking-wide shadow-sm"
+            className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-card/70 text-primary text-sm font-medium tracking-wide shadow-sm"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -60,12 +60,12 @@ const HeroSection = () => {
           >
             <a
               href="mailto:ahmadbhatti978@gmail.com"
-              className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-white/75 px-3 py-1.5 hover:text-primary transition-colors"
+              className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/75 px-3 py-1.5 hover:text-primary transition-colors"
             >
               <Mail className="w-4 h-4" />
               ahmadbhatti978@gmail.com
             </a>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-white/75 px-3 py-1.5">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/75 px-3 py-1.5">
               <MapPin className="w-4 h-4" />
               Gujranwala, Pakistan
             </span>
@@ -73,7 +73,7 @@ const HeroSection = () => {
               href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-white/75 px-3 py-1.5 hover:text-primary transition-colors"
+              className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/75 px-3 py-1.5 hover:text-primary transition-colors"
             >
               <Linkedin className="w-4 h-4" />
               LinkedIn
@@ -94,14 +94,14 @@ const HeroSection = () => {
             </a>
             <a
               href="#contact"
-              className="px-8 py-3 rounded-lg border border-border bg-white/80 text-foreground font-heading font-semibold text-sm tracking-wide hover:border-primary/50 hover:text-primary transition-all duration-300"
+              className="px-8 py-3 rounded-lg border border-border bg-card/75 text-foreground font-heading font-semibold text-sm tracking-wide hover:border-primary/50 hover:text-primary transition-all duration-300"
             >
               Contact Me
             </a>
             <a
               href={RESUME_PUBLIC_PATH}
               onClick={(e) => void downloadResume(e)}
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-border bg-white/80 text-foreground font-heading font-semibold text-sm tracking-wide hover:border-primary/50 hover:text-primary transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-border bg-card/75 text-foreground font-heading font-semibold text-sm tracking-wide hover:border-primary/50 hover:text-primary transition-all duration-300"
             >
               <FileDown className="w-4 h-4" />
               Resume

@@ -32,8 +32,8 @@ const Navbar = () => {
       <div
         className={`section-container flex items-center justify-between h-14 rounded-2xl px-5 transition-all duration-300 ${
           scrolled
-            ? "bg-slate-950/10 backdrop-blur-2xl backdrop-saturate-150 border border-white/40 shadow-[0_14px_36px_hsl(224_34%_14%_/_0.2)]"
-            : "bg-slate-950/5 backdrop-blur-xl backdrop-saturate-150 border border-white/35 shadow-[0_10px_30px_hsl(224_30%_16%_/_0.12)]"
+            ? "bg-card/55 backdrop-blur-2xl backdrop-saturate-150 border border-white/20 shadow-[0_14px_36px_hsl(236_40%_5%_/_0.35)]"
+            : "bg-card/35 backdrop-blur-xl backdrop-saturate-150 border border-white/15 shadow-[0_10px_30px_hsl(236_40%_8%_/_0.24)]"
         }`}
       >
         <Link to="/" className="font-heading font-bold text-base sm:text-lg text-gradient tracking-tight">

@@ -8,7 +8,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_8%_8%,hsl(223_84%_94%),transparent_30%),radial-gradient(circle_at_88%_12%,hsl(257_80%_94%),transparent_34%),radial-gradient(circle_at_55%_78%,hsl(220_54%_97%),transparent_40%),linear-gradient(to_bottom,hsl(0_0%_100%),hsl(220_34%_97%))]">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_9%_8%,hsl(184_70%_18%),transparent_34%),radial-gradient(circle_at_88%_12%,hsl(327_62%_22%),transparent_36%),radial-gradient(circle_at_52%_74%,hsl(236_44%_16%),transparent_42%),linear-gradient(to_bottom,hsl(236_36%_11%),hsl(236_40%_8%))]">
       <Navbar />
       <ScrollToTopButton />
       <HeroSection />
