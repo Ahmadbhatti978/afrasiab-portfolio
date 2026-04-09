@@ -35,7 +35,7 @@ jobs:
       # Optional: CUSTOM_DOMAIN=www.your-domain.com (writes dist/CNAME for Pages)
       - name: Build
         env:
-          VITE_BASE: ${{ vars.VITE_BASE || format('/{0}/', github.event.repository.name) }}
+          VITE_BASE: ${{ vars.VITE_BASE != '' && vars.VITE_BASE || (vars.CUSTOM_DOMAIN != '' && '/' || format('/{0}/', github.event.repository.name)) }}
           VITE_SITE_URL: ${{ vars.VITE_SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
         run: yarn build
 
