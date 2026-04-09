@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const experiences = [
   {
@@ -53,16 +53,13 @@ const experiences = [
   },
 ];
 
-const education = {
-  degree: "Bachelor of Science in Computer Science",
-  school: "GIFT University",
-  location: "Gujranwala, Pakistan",
-  period: "Sep 2017 — Jun 2021",
-};
-
 const ExperienceSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [visibleCount, setVisibleCount] = useState(2);
+  const visibleExperiences = experiences.slice(0, visibleCount);
+  const canShowMore = visibleCount < experiences.length;
+  const canShowLess = visibleCount > 2;
 
   return (
     <section id="experience" className="py-24" ref={ref}>
@@ -84,7 +81,7 @@ const ExperienceSection = () => {
           <div className="absolute left-6 md:left-10 top-8 bottom-8 w-px bg-gradient-to-b from-primary/70 via-primary/25 to-accent/60" />
 
           <div className="space-y-12">
-            {experiences.map((exp, i) => (
+            {visibleExperiences.map((exp, i) => (
               <motion.div
                 key={`${exp.company}-${exp.period}`}
                 initial={{ opacity: 0, x: -30 }}
@@ -115,23 +112,27 @@ const ExperienceSection = () => {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-16"
-        >
-          <h3 className="font-heading text-xl font-bold mb-4">Education</h3>
-          <div className="glass-card p-6 max-w-2xl">
-            <p className="font-heading font-semibold text-foreground">{education.degree}</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              {education.school} · {education.location}
-            </p>
-            <p className="text-xs text-primary font-medium tracking-wider uppercase mt-3">
-              {education.period}
-            </p>
-          </div>
-        </motion.div>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          {canShowMore && (
+            <button
+              type="button"
+              onClick={() => setVisibleCount((prev) => Math.min(prev + 2, experiences.length))}
+              className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:brightness-110 transition-all"
+            >
+              Show More
+            </button>
+          )}
+          {canShowLess && (
+            <button
+              type="button"
+              onClick={() => setVisibleCount(2)}
+              className="px-5 py-2.5 rounded-lg border border-border bg-white/85 text-foreground text-sm font-medium hover:border-primary/40 hover:text-primary transition-all"
+            >
+              Show Less
+            </button>
+          )}
+        </div>
+
       </div>
     </section>
   );
