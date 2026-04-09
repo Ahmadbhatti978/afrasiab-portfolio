@@ -1,12 +1,20 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import { ExternalLink } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 type Project = {
   name: string;
   company: string;
   description: string;
   tags: string[];
+  image?: string;
   /** Store or case-study URL; omit for private / unreleased work */
   link?: string;
 };
@@ -79,11 +87,36 @@ const projects: Project[] = [
 ];
 
 const projectCardClass =
-  "glass-card p-6 group hover:border-glow transition-all duration-500 hover:glow-box hover:-translate-y-1 block";
+  "glass-card overflow-hidden group hover:border-glow transition-all duration-500 hover:glow-box hover:-translate-y-1";
+
+function getProjectPreviewImage(project: Project): string | undefined {
+  if (project.image) return project.image;
+  if (!project.link) return undefined;
+  return `https://image.thum.io/get/width/1200/noanimate/${encodeURIComponent(project.link)}`;
+}
+
+function shortText(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength).trim()}...`;
+}
 
 const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [visibleCount, setVisibleCount] = useState(3);
+  const projectsWithPreview = useMemo(
+    () =>
+      projects.map((project) => ({
+        ...project,
+        previewImage: getProjectPreviewImage(project),
+      })),
+    [],
+  );
+  const visibleProjects = projectsWithPreview.slice(0, visibleCount);
+  const canShowMore = visibleCount < projectsWithPreview.length;
+  const canShowLess = visibleCount > 3;
 
   return (
     <section id="projects" className="py-24" ref={ref}>
@@ -92,76 +125,138 @@ const ProjectsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-16 text-center"
         >
+          <p className="text-xs uppercase tracking-[0.24em] text-primary/80 mb-2">Featured Work</p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">
             Projects
           </h2>
-          <div className="w-16 h-1 rounded-full bg-gradient-to-r from-primary to-accent" />
+          <div className="w-24 h-1 rounded-full bg-gradient-to-r from-primary to-accent mx-auto" />
+          <p className="mt-5 text-muted-foreground max-w-2xl mx-auto">
+            Production-ready apps across fintech, marketplaces, social, and services with strong UX and scalable architecture.
+          </p>
+          <div className="mt-6 flex items-center justify-center gap-3">
+            <span className="px-3 py-1.5 rounded-full bg-primary/10 border border-primary/25 text-primary text-xs font-medium uppercase tracking-wider">
+              {projects.length} Total Projects
+            </span>
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, i) => {
-            const body = (
-              <>
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="font-heading text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {project.name}
-                    </h3>
-                    <p className="text-xs text-muted-foreground">{project.company}</p>
-                  </div>
-                  {project.link ? (
-                    <ExternalLink className="w-4 h-4 text-muted-foreground/40 group-hover:text-accent transition-colors mt-1 shrink-0" />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {visibleProjects.map((project, i) => {
+            const hasImage = Boolean(project.previewImage) && !imageErrors[project.name];
+
+            return (
+              <motion.button
+                type="button"
+                key={`${project.name}-${i}`}
+                initial={{ opacity: 0, y: 40 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: i * 0.06, duration: 0.6 }}
+                className={`${projectCardClass} text-left`}
+                onClick={() => setSelectedProject(project)}
+              >
+                <div className="aspect-[16/9] w-full bg-muted/40 border-b border-border/70">
+                  {hasImage ? (
+                    <img
+                      src={project.previewImage}
+                      alt={`${project.name} preview`}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      onError={() => setImageErrors((prev) => ({ ...prev, [project.name]: true }))}
+                    />
                   ) : (
-                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground/70 mt-1 shrink-0">
-                      Private
-                    </span>
+                    <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-primary/20 via-accent/20 to-primary/5">
+                      <p className="font-heading text-xl font-semibold text-foreground/90 px-4 text-center">{project.name}</p>
+                    </div>
                   )}
                 </div>
-                <p className="text-sm text-secondary-foreground/80 leading-relaxed mb-4">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="p-5">
+                  <h3 className="font-heading text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {project.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                    {shortText(project.description, 95)}
+                  </p>
                 </div>
-              </>
-            );
-
-            return project.link ? (
-              <motion.a
-                key={`${project.name}-${i}`}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 40 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.06, duration: 0.6 }}
-                className={`${projectCardClass} cursor-pointer`}
-              >
-                {body}
-              </motion.a>
-            ) : (
-              <motion.div
-                key={`${project.name}-${i}`}
-                initial={{ opacity: 0, y: 40 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.06, duration: 0.6 }}
-                className={`${projectCardClass} cursor-default`}
-              >
-                {body}
-              </motion.div>
+              </motion.button>
             );
           })}
         </div>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          {canShowMore && (
+            <button
+              type="button"
+              onClick={() => setVisibleCount((prev) => Math.min(prev + 3, projectsWithPreview.length))}
+              className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium hover:brightness-110 transition-all"
+            >
+              Show More
+            </button>
+          )}
+          {canShowLess && (
+            <button
+              type="button"
+              onClick={() => setVisibleCount(3)}
+              className="px-5 py-2.5 rounded-lg border border-border bg-white/85 text-foreground text-sm font-medium hover:border-primary/40 hover:text-primary transition-all"
+            >
+              Show Less
+            </button>
+          )}
+        </div>
       </div>
+
+      <Dialog open={Boolean(selectedProject)} onOpenChange={(isOpen) => !isOpen && setSelectedProject(null)}>
+        <DialogContent className="max-w-2xl rounded-2xl">
+          {selectedProject && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="font-heading text-2xl">{selectedProject.name}</DialogTitle>
+                <DialogDescription>{selectedProject.company}</DialogDescription>
+              </DialogHeader>
+
+              <div className="rounded-xl overflow-hidden border border-border/70 bg-muted/30">
+                {selectedProject.image || selectedProject.link ? (
+                  <img
+                    src={getProjectPreviewImage(selectedProject)}
+                    alt={`${selectedProject.name} preview`}
+                    className="w-full h-64 object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="h-64 w-full flex items-center justify-center bg-gradient-to-br from-primary/20 via-accent/20 to-primary/5">
+                    <p className="font-heading text-2xl font-semibold text-foreground/90">{selectedProject.name}</p>
+                  </div>
+                )}
+              </div>
+
+              <p className="text-sm text-secondary-foreground/90 leading-relaxed">{selectedProject.description}</p>
+
+              <div className="flex flex-wrap gap-2">
+                {selectedProject.tags.map((tag) => (
+                  <span key={tag} className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {selectedProject.link ? (
+                <a
+                  href={selectedProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 w-fit px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Open Project Link
+                </a>
+              ) : (
+                <span className="text-xs uppercase tracking-wider text-muted-foreground">Private project</span>
+              )}
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

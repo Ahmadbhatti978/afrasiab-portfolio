@@ -53,18 +53,19 @@ const SkillsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-24 bg-white/70" ref={ref}>
+    <section id="skills" className="py-24" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-16 text-center"
         >
+          <p className="text-xs uppercase tracking-[0.24em] text-primary/80 mb-2">Tech Stack</p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">
             Skills
           </h2>
-          <div className="w-16 h-1 rounded-full bg-primary" />
+          <div className="w-24 h-1 rounded-full bg-gradient-to-r from-primary to-accent mx-auto" />
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -74,9 +75,9 @@ const SkillsSection = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="glass-card p-6 hover:border-glow transition-all duration-300"
+              className="glass-card p-6 hover:border-glow transition-all duration-300 hover:-translate-y-1"
             >
-              <h3 className="font-heading text-sm font-semibold text-primary mb-4 uppercase tracking-wider">
+              <h3 className="font-heading text-sm font-semibold text-primary mb-4 uppercase tracking-[0.2em]">
                 {cat.title}
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -84,7 +85,7 @@ const SkillsSection = () => {
                   <motion.span
                     key={skill}
                     whileHover={{ scale: 1.05, y: -2 }}
-                    className="text-sm px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground border border-border hover:border-primary/30 transition-colors cursor-default"
+                    className="text-sm px-3 py-1.5 rounded-full bg-secondary/80 text-secondary-foreground border border-border hover:border-primary/40 hover:bg-primary/10 transition-colors cursor-default"
                   >
                     {skill}
                   </motion.span>

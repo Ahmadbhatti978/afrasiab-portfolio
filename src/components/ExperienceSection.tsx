@@ -65,22 +65,23 @@ const ExperienceSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="py-24 bg-white/70" ref={ref}>
+    <section id="experience" className="py-24" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-16 text-center"
         >
+          <p className="text-xs uppercase tracking-[0.24em] text-primary/80 mb-2">Journey</p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">
             Experience
           </h2>
-          <div className="w-16 h-1 rounded-full bg-primary" />
+          <div className="w-24 h-1 rounded-full bg-gradient-to-r from-primary to-accent mx-auto" />
         </motion.div>
 
-        <div className="relative">
-          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-border" />
+        <div className="relative rounded-3xl border border-border/70 bg-white/65 backdrop-blur-sm p-6 md:p-8">
+          <div className="absolute left-6 md:left-10 top-8 bottom-8 w-px bg-gradient-to-b from-primary/70 via-primary/25 to-accent/60" />
 
           <div className="space-y-12">
             {experiences.map((exp, i) => (
@@ -89,11 +90,11 @@ const ExperienceSection = () => {
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: i * 0.15, duration: 0.6 }}
-                className="relative pl-8 md:pl-20"
+                className="relative pl-12 md:pl-24"
               >
-                <div className="absolute left-0 md:left-8 top-2 w-2.5 h-2.5 rounded-full bg-primary -translate-x-1 ring-4 ring-background" />
+                <div className="absolute left-6 md:left-10 top-2 w-3 h-3 rounded-full bg-primary -translate-x-1/2 ring-4 ring-background shadow-[0_0_0_3px_hsl(var(--primary)_/_0.2)]" />
 
-                <div className="glass-card p-6 hover:border-glow transition-all duration-500 hover:glow-box">
+                <div className="glass-card p-6 hover:border-glow transition-all duration-500 hover:glow-box hover:-translate-y-1">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1">
                     <h3 className="font-heading text-lg font-semibold text-foreground">
                       {exp.role}

@@ -24,12 +24,13 @@ const ContactSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto"
+          className="text-center max-w-4xl mx-auto"
         >
+          <p className="text-xs uppercase tracking-[0.24em] text-primary/80 mb-2">Contact</p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">
             Let's Connect
           </h2>
-          <div className="w-16 h-1 rounded-full bg-primary mx-auto mb-8" />
+          <div className="w-24 h-1 rounded-full bg-gradient-to-r from-primary to-accent mx-auto mb-8" />
           <p className="text-muted-foreground mb-12">
             Interested in working together? Feel free to reach out.
           </p>
@@ -65,9 +66,9 @@ const ContactSection = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
                 whileHover={{ y: -3 }}
-                className="glass-card p-5 flex items-center gap-4 hover:border-glow transition-all duration-300 group hover:-translate-y-1"
+                className="glass-card p-5 flex items-center gap-4 hover:border-glow transition-all duration-300 group hover:-translate-y-1 hover:glow-box"
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:from-primary/30 group-hover:to-accent/30 transition-colors">
                   <item.icon className="w-5 h-5 text-primary" />
                 </div>
                 <div className="text-left">
