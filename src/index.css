@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    --background: 220 40% 99%;
-    --foreground: 224 45% 12%;
+    --background: 220 32% 99%;
+    --foreground: 223 43% 10%;
 
     --card: 0 0% 100%;
     --card-foreground: 224 52% 12%;
@@ -15,32 +15,32 @@
     --popover: 0 0% 100%;
     --popover-foreground: 224 52% 12%;
 
-    --primary: 222 88% 56%;
+    --primary: 223 84% 44%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 42% 96%;
-    --secondary-foreground: 223 34% 22%;
+    --secondary: 220 30% 94%;
+    --secondary-foreground: 222 30% 20%;
 
-    --muted: 214 34% 95%;
-    --muted-foreground: 220 13% 42%;
+    --muted: 218 24% 93%;
+    --muted-foreground: 220 12% 38%;
 
-    --accent: 187 86% 42%;
+    --accent: 257 78% 56%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 26% 88%;
-    --input: 220 26% 88%;
-    --ring: 222 88% 56%;
+    --border: 220 20% 84%;
+    --input: 220 20% 84%;
+    --ring: 223 84% 44%;
 
     --radius: 0.75rem;
 
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    --glow-primary: 0 16px 36px hsl(222 88% 56% / 0.2);
-    --glow-primary-strong: 0 22px 50px hsl(187 86% 42% / 0.28);
+    --glow-primary: 0 16px 36px hsl(223 84% 44% / 0.24);
+    --glow-primary-strong: 0 24px 54px hsl(257 78% 56% / 0.28);
   }
 }
 
@@ -59,15 +59,15 @@
   }
 
   ::selection {
-    background: hsl(222 88% 56% / 0.24);
-    color: hsl(224 45% 12%);
+    background: hsl(223 84% 44% / 0.24);
+    color: hsl(223 43% 10%);
   }
 }
 
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(222 88% 54%), hsl(187 86% 40%));
+    background-image: linear-gradient(135deg, hsl(223 84% 44%), hsl(257 78% 56%));
   }
 
   .glow-box {
@@ -104,7 +104,7 @@
 
   .glass-card {
     @apply bg-card/80 backdrop-blur-md border border-border rounded-2xl;
-    box-shadow: 0 14px 36px hsl(223 34% 18% / 0.08);
+    box-shadow: 0 16px 38px hsl(223 38% 15% / 0.1);
   }
 }
 
