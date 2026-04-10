@@ -42,8 +42,9 @@ jobs:
           GITHUB_REPO_NAME: ${{ github.event.repository.name }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
         run: |
-          if [ -n "${VITE_BASE_INPUT:-}" ]; then
-            export VITE_BASE="$VITE_BASE_INPUT"
+          VITE_BASE_INPUT_TRIMMED="$(echo -n "${VITE_BASE_INPUT:-}" | tr -d '[:space:]')"
+          if [ -n "$VITE_BASE_INPUT_TRIMMED" ]; then
+            export VITE_BASE="$VITE_BASE_INPUT_TRIMMED"
           elif [ -n "${CUSTOM_DOMAIN:-}" ]; then
             export VITE_BASE="/"
           elif [ "$GITHUB_REPO_NAME" = "${GITHUB_REPOSITORY_OWNER}.github.io" ]; then
@@ -54,6 +55,8 @@ jobs:
           fi
           echo "VITE_BASE=$VITE_BASE"
           yarn build
+          test -f dist/index.html
+          grep -q 'type="module"' dist/index.html || (echo "dist/index.html missing module script" && exit 1)
 
       - name: SPA fallback for GitHub Pages
         run: cp dist/index.html dist/404.html
