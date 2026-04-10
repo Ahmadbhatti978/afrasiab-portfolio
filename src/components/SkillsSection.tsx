@@ -16,7 +16,7 @@ const skillCategories = [
   },
   {
     title: "Backend & APIs",
-    skills: ["RESTful APIs", "API integration", "Google Cloud Functions"],
+    skills: ["RESTful APIs", "API integration", "Google Cloud Functions", "WebSockets",],
   },
   {
     title: "Services & SDKs",
@@ -24,27 +24,26 @@ const skillCategories = [
       "Firebase",
       "FCM",
       "OneSignal",
-      "WebSockets",
       "Google Maps",
       "Google ML Kit",
     ],
   },
   {
     title: "Dev Tools",
-    skills: ["Git", "CI/CD"],
+    skills: ["Git", "CI/CD", "Github", "Bitbucket", "Jira", "Slack"],
   },
   {
     title: "Soft Skills",
     skills: [
       "Project delivery",
       "Teamwork & collaboration",
-      "Goal attainment",
       "Relationship building",
+      "Communication",
     ],
   },
   {
     title: "Languages",
-    skills: ["English"],
+    skills: ["English", "Urdu", "Hindi"],
   },
 ];
 

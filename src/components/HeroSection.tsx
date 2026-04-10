@@ -5,7 +5,7 @@ import { downloadResume, RESUME_PUBLIC_PATH } from "@/lib/resume";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-[calc(6.25rem+env(safe-area-inset-top,0px))] md:pt-[calc(5rem+env(safe-area-inset-top,0px))] pb-10 sm:pb-12 md:pb-16">
       {/* Animated background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="hero-coder-grid absolute inset-0 opacity-90" aria-hidden />
@@ -21,10 +21,10 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="section-container relative z-10">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 md:px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-primary/30 bg-card/70 text-primary text-sm font-medium tracking-wide shadow-sm"
+            className="flex flex-wrap items-center justify-center gap-2 mb-6 px-3.5 sm:px-4 py-1.5 rounded-full border border-primary/30 bg-card/70 text-primary text-xs sm:text-sm font-medium tracking-wide shadow-sm text-balance w-fit max-w-full mx-auto"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
