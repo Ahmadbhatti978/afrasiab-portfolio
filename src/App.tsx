@@ -9,9 +9,22 @@ import NotFound from "./pages/NotFound.tsx";
 const queryClient = new QueryClient();
 
 function routerBasename(): string | undefined {
-  const base = import.meta.env.BASE_URL;
-  if (base === "/") return undefined;
-  return base.replace(/\/$/, "") || undefined;
+  const base = import.meta.env.BASE_URL ?? "/";
+
+  // Relative asset base (`./`) on GitHub Pages: infer /<repo> from the URL so routes match.
+  if (typeof window !== "undefined" && (base === "./" || base === ".")) {
+    const host = window.location.hostname;
+    if (host === "github.io" || host.endsWith(".github.io")) {
+      const first = window.location.pathname.split("/").filter(Boolean)[0];
+      return first ? `/${first}` : undefined;
+    }
+  }
+
+  if (base.startsWith("/") && base !== "/") {
+    return base.replace(/\/$/, "") || undefined;
+  }
+
+  return undefined;
 }
 
 const App = () => (

@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-// GitHub project Pages: set VITE_BASE="/<repo-name>/" in CI (see .github/workflows).
+// GitHub Pages: CI defaults to VITE_BASE=./ (relative assets). Override with VITE_BASE="/<repo>/" if needed.
 export default defineConfig(({ mode }) => ({
   base: process.env.VITE_BASE ?? "/",
   server: {
