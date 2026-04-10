@@ -10,21 +10,9 @@ const queryClient = new QueryClient();
 
 function routerBasename(): string | undefined {
   const base = import.meta.env.BASE_URL ?? "/";
-
-  // Relative asset base (`./`) on GitHub Pages: infer /<repo> from the URL so routes match.
-  if (typeof window !== "undefined" && (base === "./" || base === ".")) {
-    const host = window.location.hostname;
-    if (host === "github.io" || host.endsWith(".github.io")) {
-      const first = window.location.pathname.split("/").filter(Boolean)[0];
-      return first ? `/${first}` : undefined;
-    }
-  }
-
-  if (base.startsWith("/") && base !== "/") {
-    return base.replace(/\/$/, "") || undefined;
-  }
-
-  return undefined;
+  // Absolute subpath only (e.g. /my-repo/ from Vite). Relative ./ is not used in CI — see workflow.
+  if (!base.startsWith("/") || base === "/") return undefined;
+  return base.replace(/\/$/, "") || undefined;
 }
 
 const App = () => (
