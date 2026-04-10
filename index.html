@@ -14,6 +14,16 @@
         window.location.replace(path + "/" + window.location.search + window.location.hash);
       })();
     </script>
+    <script>
+      (function () {
+        var h = window.location.hostname;
+        if (h !== "github.io" && !h.endsWith(".github.io")) return;
+        if (window.location.hash.length > 1) return;
+        var path = window.location.pathname || "/";
+        if (!path.endsWith("/")) return;
+        window.history.replaceState(null, "", path + window.location.search + "#/");
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0d74f5" />

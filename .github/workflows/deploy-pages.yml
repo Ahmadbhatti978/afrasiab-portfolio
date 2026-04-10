@@ -44,7 +44,14 @@ jobs:
         run: |
           VITE_BASE_INPUT_TRIMMED="$(echo -n "${VITE_BASE_INPUT:-}" | tr -d '[:space:]')"
           if [ -n "$VITE_BASE_INPUT_TRIMMED" ]; then
-            export VITE_BASE="$VITE_BASE_INPUT_TRIMMED"
+            if [ "$VITE_BASE_INPUT_TRIMMED" = "/" ]; then
+              export VITE_BASE="/"
+            elif [[ "$VITE_BASE_INPUT_TRIMMED" =~ ^/[^/]+/$ ]]; then
+              export VITE_BASE="$VITE_BASE_INPUT_TRIMMED"
+            else
+              echo "::error::Repository variable VITE_BASE is invalid: '$VITE_BASE_INPUT_TRIMMED'. Use '/' or '/repo-name/' (leading + trailing slash). Delete the variable to auto-use /${GITHUB_REPO_NAME}/"
+              exit 1
+            fi
           elif [ -n "${CUSTOM_DOMAIN:-}" ]; then
             export VITE_BASE="/"
           elif [ "$GITHUB_REPO_NAME" = "${GITHUB_REPOSITORY_OWNER}.github.io" ]; then
@@ -53,10 +60,11 @@ jobs:
           else
             export VITE_BASE="/${GITHUB_REPO_NAME}/"
           fi
-          echo "VITE_BASE=$VITE_BASE"
+          echo "VITE_BASE=$VITE_BASE — open: https://${GITHUB_REPOSITORY_OWNER}.github.io${VITE_BASE}#/"
           yarn build
           test -f dist/index.html
           grep -q 'type="module"' dist/index.html || (echo "dist/index.html missing module script" && exit 1)
+          grep -q "src=\"${VITE_BASE}assets/" dist/index.html || (echo "dist/index.html script path does not match VITE_BASE" && exit 1)
 
       - name: SPA fallback for GitHub Pages
         run: cp dist/index.html dist/404.html
