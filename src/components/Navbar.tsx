@@ -3,12 +3,17 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { downloadResume, RESUME_PUBLIC_PATH } from "@/lib/resume";
+import { scrollToSection } from "@/lib/scrollToSection";
 
-const links: { label: string; href: string; external?: boolean; resumeClick?: boolean }[] = [
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
+type NavItem =
+  | { label: string; sectionId: string }
+  | { label: string; href: string; external?: boolean; resumeClick?: boolean };
+
+const links: NavItem[] = [
+  { label: "Skills", sectionId: "skills" },
+  { label: "Projects", sectionId: "projects" },
+  { label: "Experience", sectionId: "experience" },
+  { label: "Contact", sectionId: "contact" },
   { label: "Resume", href: RESUME_PUBLIC_PATH, resumeClick: true },
 ];
 
@@ -52,17 +57,31 @@ const Navbar = () => {
           Afrasiab Ahmad
         </Link>
         <div className="hidden lg:flex items-center gap-6">
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm text-foreground/85 hover:text-primary transition-colors font-medium"
-              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              {...(link.resumeClick ? { onClick: (e) => void downloadResume(e) } : {})}
-            >
-              {link.label}
-            </a>
-          ))}
+          {links.map((link) =>
+            "sectionId" in link ? (
+              <a
+                key={link.label}
+                href={`#${link.sectionId}`}
+                className="text-sm text-foreground/85 hover:text-primary transition-colors font-medium cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.sectionId);
+                }}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm text-foreground/85 hover:text-primary transition-colors font-medium"
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                {...(link.resumeClick ? { onClick: (e) => void downloadResume(e) } : {})}
+              >
+                {link.label}
+              </a>
+            ),
+          )}
         </div>
         <button
           type="button"
@@ -82,18 +101,35 @@ const Navbar = () => {
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="rounded-2xl border border-white/20 bg-card/80 backdrop-blur-2xl shadow-[0_18px_36px_hsl(236_40%_5%_/_0.35)] p-2"
           >
-            {links.map((link) => (
-              <a
-                key={`mobile-${link.label}`}
-                href={link.href}
-                className="block px-4 py-3 rounded-xl text-sm text-foreground/90 hover:bg-primary/10 hover:text-primary transition-colors"
-                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                {...(link.resumeClick ? { onClick: (e) => void downloadResume(e) } : {})}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) =>
+              "sectionId" in link ? (
+                <a
+                  key={`mobile-${link.label}`}
+                  href={`#${link.sectionId}`}
+                  className="block px-4 py-3 rounded-xl text-sm text-foreground/90 hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(link.sectionId);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <a
+                  key={`mobile-${link.label}`}
+                  href={link.href}
+                  className="block px-4 py-3 rounded-xl text-sm text-foreground/90 hover:bg-primary/10 hover:text-primary transition-colors"
+                  {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  onClick={(e) => {
+                    if (link.resumeClick) void downloadResume(e);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
           </motion.div>
         </div>
       )}

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Linkedin, FileDown, Sparkles } from "lucide-react";
 import { LINKEDIN_URL } from "@/lib/siteLinks";
 import { downloadResume, RESUME_PUBLIC_PATH } from "@/lib/resume";
+import { scrollToSection } from "@/lib/scrollToSection";
 
 const HeroSection = () => {
   return (
@@ -88,13 +89,21 @@ const HeroSection = () => {
           >
             <a
               href="#projects"
-              className="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-heading font-semibold text-sm tracking-wide hover:brightness-110 transition-all duration-300 glow-box hover:glow-box-strong"
+              className="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-heading font-semibold text-sm tracking-wide hover:brightness-110 transition-all duration-300 glow-box hover:glow-box-strong cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("projects");
+              }}
             >
               View Projects
             </a>
             <a
               href="#contact"
-              className="px-8 py-3 rounded-lg border border-border bg-card/75 text-foreground font-heading font-semibold text-sm tracking-wide hover:border-primary/50 hover:text-primary transition-all duration-300"
+              className="px-8 py-3 rounded-lg border border-border bg-card/75 text-foreground font-heading font-semibold text-sm tracking-wide hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("contact");
+              }}
             >
               Contact Me
             </a>

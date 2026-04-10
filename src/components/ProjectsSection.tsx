@@ -8,7 +8,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { publicUrl } from "@/lib/publicUrl";
+
+/** Public folder asset; uses Vite BASE_URL (inline — no extra module). */
+function withBase(file: string): string {
+  const b = import.meta.env.BASE_URL ?? "/";
+  const prefix = b.endsWith("/") ? b : `${b}/`;
+  return `${prefix}${file.replace(/^\//, "")}`;
+}
 
 type Project = {
   name: string;
@@ -26,7 +32,7 @@ const projects: Project[] = [
     description:
       "Education app for RYA Sailing & Motorboat Qualification",
     tags: ["React Native", "Redux", "API Integration", "OneSignal", "Firebase"],
-    image: publicUrl("ardent-training.webp"),
+    image: withBase("ardent-training.webp"),
     link: "https://play.google.com/store/apps/details?id=com.ardent_training.android"
   },
   {
@@ -35,7 +41,7 @@ const projects: Project[] = [
     description:
       "Home services marketplace app for home services",
     tags: ["React Native", "Expo", "Redux Saga", "API Integration", "Firebase"],
-    image: publicUrl("dari-home.webp"),
+    image: withBase("dari-home.webp"),
     link: "https://play.google.com/store/apps/details?id=com.dari.mobile.app&hl=en"
   },
   {
@@ -44,7 +50,7 @@ const projects: Project[] = [
     description:
       "Laundry services marketplace app for laundry services",
     tags: ["React Native", "Expo", "Redux Saga", "API Integration", "Firebase"],
-    image: publicUrl("cleanline.webp"),
+    image: withBase("cleanline.webp"),
     link: "https://play.google.com/store/apps/details?id=com.cleanline.app"
   },
   {
@@ -53,7 +59,7 @@ const projects: Project[] = [
     description:
       "Taxi app for drivers to receive and manage ride requests efficiently.",
     tags: ["Flutter", "WebSockets", "APIs", "Firebase"],
-    image: publicUrl("uprides-driver.webp"),
+    image: withBase("uprides-driver.webp"),
     link: "https://play.google.com/store/apps/details?id=com.app.bold_driver&hl=en",
   },
   {
@@ -62,7 +68,7 @@ const projects: Project[] = [
     description:
       "Fintech app for personal and corporate finance flows with API-driven features.",
     tags: ["Flutter", "Fintech", "APIs", "Firebase"],
-    image: publicUrl("neo-one.webp"),
+    image: withBase("neo-one.webp"),
     link: "https://play.google.com/store/apps/details?id=com.neo.one&hl=en&pli=1",
   },
   {
@@ -71,7 +77,7 @@ const projects: Project[] = [
     description:
       "Social app for athletes, trainers, and coaches to share basketball drills and workouts",
     tags: ["Flutter", "Firebase", "API Integration"],
-    image: publicUrl("hoopr.webp"),
+    image: withBase("hoopr.webp"),
     link: "https://play.google.com/store/apps/details?id=com.sherman.hoopr&hl=en",
   },
   {
@@ -80,7 +86,7 @@ const projects: Project[] = [
     description:
       "App to enjoy outstanding free reward & gifts each time you shop",
     tags: ["Flutter", "Firebase", "API Integration"],
-    image: publicUrl("kafu.webp"),
+    image: withBase("kafu.webp"),
     link: "https://apps.apple.com/us/app/kafu-app-%D8%AA%D8%B7%D8%A8%D9%8A%D9%82-%D9%83%D9%81%D9%88/id1321929327",
   },
   {
@@ -89,7 +95,7 @@ const projects: Project[] = [
     description:
       "Seller app to list businesses, reach buyers, and track progress",
     tags: ["Flutter", "Firebase", "WebView", "OneSignal"],
-    image: publicUrl("rightbiz-seller.webp"),
+    image: withBase("rightbiz-seller.webp"),
     link: "https://play.google.com/store/apps/details?id=com.rightbiz.app&hl=en",
   },
   {
@@ -98,7 +104,7 @@ const projects: Project[] = [
     description:
       "Business marketplace to search, evaluate, and connect with buying and selling opportunities.",
     tags: ["Flutter", "Firebase", "WebView", "OneSignal"],
-    image: publicUrl("rightbiz-discovery.webp"),
+    image: withBase("rightbiz-discovery.webp"),
     link: "https://play.google.com/store/apps/details?id=com.rightbiz.rightbiz_discovery&hl=en",
   },
   {
@@ -107,7 +113,7 @@ const projects: Project[] = [
     description:
       "Quran app to read the Quran with offline support and audio playback.",
     tags: ["Flutter", "Firebase", "API Integration"],
-    image: publicUrl("my-quran.webp"),
+    image: withBase("my-quran.webp"),
     link: "https://play.google.com/store/apps/details?id=com.myquran.app",
   },
 
