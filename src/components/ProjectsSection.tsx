@@ -15,7 +15,6 @@ type Project = {
   description: string;
   tags: string[];
   image?: string;
-  /** Store or case-study URL; omit for private / unreleased work */
   link?: string;
 };
 
@@ -24,66 +23,93 @@ const projects: Project[] = [
     name: "Ardent Training",
     company: "React Native",
     description:
-      "Forums and live sessions in a React Native CLI app: real-time sessions, posts, likes, and threaded comments.",
-    tags: ["React Native", "Redux Saga", "Forums"],
+      "Education app for RYA Sailing & Motorboat Qualification",
+    tags: ["React Native", "Redux", "API Integration", "OneSignal", "Firebase"],
+    image: "/ardent-training.webp",
     link: "https://play.google.com/store/apps/details?id=com.ardent_training.android"
   },
   {
     name: "Dari — Home Services",
     company: "React Native (Expo)",
     description:
-      "Migrated a native Android app to React Native (Expo): new screens, API integration, and Redux Saga state management.",
-    tags: ["React Native", "Expo", "Redux Saga"],
+      "Home services marketplace app for home services",
+    tags: ["React Native", "Expo", "Redux Saga", "API Integration", "Firebase"],
+    image: "/dari-home.webp",
     link: "https://play.google.com/store/apps/details?id=com.dari.mobile.app&hl=en"
   },
   {
     name: "CleanLine",
     company: "React Native (Expo)",
     description:
-      "Native Android to Expo migration for a laundry-focused home services platform: screens, APIs, and Redux Saga.",
-    tags: ["React Native", "Expo", "Redux Saga"],
+      "Laundry services marketplace app for laundry services",
+    tags: ["React Native", "Expo", "Redux Saga", "API Integration", "Firebase"],
+    image: "/cleanline.webp",
     link: "https://play.google.com/store/apps/details?id=com.cleanline.app"
   },
   {
     name: "Uprides Driver",
     company: "Unanime Planet",
     description:
-      "Driver platform similar to a taxi app: receive and manage ride requests efficiently.",
-    tags: ["Flutter", "WebSockets", "APIs"],
-    link: "https://play.google.com/store/apps/details?id=com.unanimeplanet.uprides.driver",
+      "Taxi app for drivers to receive and manage ride requests efficiently.",
+    tags: ["Flutter", "WebSockets", "APIs", "Firebase"],
+    image: "/uprides-driver.webp",
+    link: "https://play.google.com/store/apps/details?id=com.app.bold_driver&hl=en",
   },
   {
     name: "Neo One",
     company: "HeapStash Global",
     description:
-      "NEO ONE mobile app: secure personal and corporate finance flows with API-driven features.",
-    tags: ["Flutter", "Fintech", "APIs"],
-    link: "https://play.google.com/store/apps/details?id=com.heapstash.neoone",
+      "Fintech app for personal and corporate finance flows with API-driven features.",
+    tags: ["Flutter", "Fintech", "APIs", "Firebase"],
+    image: "/neo-one.webp",
+    link: "https://play.google.com/store/apps/details?id=com.neo.one&hl=en&pli=1",
   },
   {
     name: "HOOPr",
     company: "Appcrates",
     description:
-      "Social app for athletes, trainers, and coaches to share basketball drills and workouts, powered by Flutter and Firebase.",
-    tags: ["Flutter", "Firebase", "Social"],
-    link: "https://play.google.com/store/apps/details?id=com.hoopr.app",
+      "Social app for athletes, trainers, and coaches to share basketball drills and workouts",
+    tags: ["Flutter", "Firebase", "API Integration"],
+    image: "/hoopr.webp",
+    link: "https://play.google.com/store/apps/details?id=com.sherman.hoopr&hl=en",
+  },
+  {
+    name: "KAFU App",
+    company: "TechVention",
+    description:
+      "App to enjoy outstanding free reward & gifts each time you shop",
+    tags: ["Flutter", "Firebase", "API Integration"],
+    image: "/kafu.webp",
+    link: "https://apps.apple.com/us/app/kafu-app-%D8%AA%D8%B7%D8%A8%D9%8A%D9%82-%D9%83%D9%81%D9%88/id1321929327",
   },
   {
     name: "Rightbiz Seller App",
     company: "Rightbiz",
     description:
-      "Seller tooling to list businesses, reach buyers, and track progress with Firebase and WebView where needed.",
-    tags: ["Flutter", "Firebase", "WebView"],
-    link: "https://play.google.com/store/apps/details?id=com.rightbiz.seller",
+      "Seller app to list businesses, reach buyers, and track progress",
+    tags: ["Flutter", "Firebase", "WebView", "OneSignal"],
+    image: "/rightbiz-seller.webp",
+    link: "https://play.google.com/store/apps/details?id=com.rightbiz.app&hl=en",
   },
   {
     name: "Rightbiz Discovery",
     company: "Rightbiz",
     description:
-      "UK business marketplace to search, evaluate, and connect with buying and selling opportunities.",
-    tags: ["Flutter", "Firebase", "Marketplace"],
-    link: "https://play.google.com/store/apps/details?id=com.rightbiz.discovery",
+      "Business marketplace to search, evaluate, and connect with buying and selling opportunities.",
+    tags: ["Flutter", "Firebase", "WebView", "OneSignal"],
+    image: "/rightbiz-discovery.webp",
+    link: "https://play.google.com/store/apps/details?id=com.rightbiz.rightbiz_discovery&hl=en",
   },
+  {
+    name: "My Quran",
+    company: "MosquePay",
+    description:
+      "Quran app to read the Quran with offline support and audio playback.",
+    tags: ["Flutter", "Firebase", "API Integration"],
+    image: "/my-quran.webp",
+    link: "https://play.google.com/store/apps/details?id=com.myquran.app",
+  },
+
 ];
 
 const projectCardClass =
