@@ -116,7 +116,15 @@ const projects: Project[] = [
     image: withBase("my-quran.webp"),
     link: "https://play.google.com/store/apps/details?id=com.myquran.app",
   },
-
+  {
+    name: "My Islamic Dream",
+    company: "MosquePay",
+    description:
+      "Islamic dream analysis app to analyze your dreams and get insights.",
+    tags: ["Flutter", "Firebase", "API Integration"],
+    image: withBase("islamic-dream.webp"),
+    link: "https://play.google.com/store/apps/details?id=com.myislamicdream.my_islamic_dream",
+  },
 ];
 
 const projectCardClass =
