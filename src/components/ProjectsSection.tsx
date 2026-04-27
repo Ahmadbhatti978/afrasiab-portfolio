@@ -27,6 +27,15 @@ type Project = {
 
 const projects: Project[] = [
   {
+    name: "Closet Cycle",
+    company: "Freelance",
+    description:
+      "Closet Cycle is your go-to clothing marketplace to buy, sell, and trade clothes with ease",
+    tags: ["Flutter", "Firebase", "API Integration", 'Cloud Functions', 'Shippo API', 'Stripe', 'Stripe Connect'],
+    image: withBase("closet.webp"),
+    link: "https://apps.apple.com/us/app/closet-cycle/id6755796221"
+  },
+  {
     name: "Ardent Training",
     company: "React Native",
     description:
