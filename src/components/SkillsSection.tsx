@@ -16,7 +16,7 @@ const skillCategories = [
   },
   {
     title: "Backend & APIs",
-    skills: ["RESTful APIs", "API integration", "Google Cloud Functions", "WebSockets",],
+    skills: ["RESTful APIs", "API integration", "Cloud Functions", "WebSockets", 'Stripe', 'Stripe Connect', 'Shippo API', 'Webhooks',],
   },
   {
     title: "Services & SDKs",
@@ -26,6 +26,10 @@ const skillCategories = [
       "OneSignal",
       "Google Maps",
       "Google ML Kit",
+      "Stripe",
+      "Stripe Connect",
+      "Shippo API",
+      "Webhooks",
     ],
   },
   {
